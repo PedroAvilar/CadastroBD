@@ -27,7 +27,9 @@ public class PessoaFisica extends Pessoa {
     //Método exibir que sobrescreve exibir na classe Pessoa
     @Override
     public void exibir() {
+        System.out.println("DADOS DA PESSOA FISICA");
         super.exibir();
         System.out.println("CPF: " + cpf);
+        System.out.println("-------------------------");
     }
 }
