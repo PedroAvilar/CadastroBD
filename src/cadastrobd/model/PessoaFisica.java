@@ -2,7 +2,7 @@ package cadastrobd.model;
 
 public class PessoaFisica extends Pessoa {
     //Campo
-    private String cpf;
+    private String CPF;
     
     //Construtor padrão
     public PessoaFisica() {
@@ -10,18 +10,18 @@ public class PessoaFisica extends Pessoa {
     }
     
     //Construtor completo
-    public PessoaFisica(int idPessoa, String nomePessoa, String email, String telefone,
-            String logradouro, String cidade, String estado, String cpf) {
-        super(idPessoa, nomePessoa, email, telefone, logradouro, cidade, estado);
-        this.cpf = cpf;
+    public PessoaFisica(int IDPessoa, String NomePessoa, String Email, String Telefone,
+            String Logradouro, String Cidade, String Estado, String CPF) {
+        super(IDPessoa, NomePessoa, Email, Telefone, Logradouro, Cidade, Estado);
+        this.CPF = CPF;
     }
     
     //Getter e setter
-    public String getCpf() {
-        return cpf;
+    public String getCPF() {
+        return CPF;
     }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpf(String CPF) {
+        this.CPF = CPF;
     }
     
     //Método exibir que sobrescreve exibir na classe Pessoa
@@ -29,7 +29,7 @@ public class PessoaFisica extends Pessoa {
     public void exibir() {
         System.out.println("DADOS DA PESSOA FISICA");
         super.exibir();
-        System.out.println("CPF: " + cpf);
-        System.out.println("-------------------------");
+        System.out.println("CPF: " + CPF);
+        System.out.println("______________________________________");
     }
 }

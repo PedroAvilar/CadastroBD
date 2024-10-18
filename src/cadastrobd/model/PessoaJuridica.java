@@ -2,7 +2,7 @@ package cadastrobd.model;
 
 public class PessoaJuridica extends Pessoa {
     //Campo
-    private String cnpj;
+    private String CNPJ;
     
     //Construtor padrão
     public PessoaJuridica() {
@@ -10,18 +10,18 @@ public class PessoaJuridica extends Pessoa {
     }
     
     //Construtor completo
-    public PessoaJuridica(int idPessoa, String nomePessoa, String email, String telefone,
-            String logradouro, String cidade, String estado, String cnpj) {
-        super(idPessoa, nomePessoa, email, telefone, logradouro, cidade, estado);
-        this.cnpj = cnpj;
+    public PessoaJuridica(int IDPessoa, String NomePessoa, String Email, String Telefone,
+            String Logradouro, String Cidade, String Estado, String CNPJ) {
+        super(IDPessoa, NomePessoa, Email, Telefone, Logradouro, Cidade, Estado);
+        this.CNPJ = CNPJ;
     }
     
     //Getter e setter
-    public String getCnpj() {
-        return cnpj;
+    public String getCNPJ() {
+        return CNPJ;
     }
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
     }
     
     //Método exibir que sobrescreve exibir na classe Pessoa
@@ -29,7 +29,7 @@ public class PessoaJuridica extends Pessoa {
     public void exibir() {
         System.out.println("DADOS DA PESSOA JURIDICA");
         super.exibir();
-        System.out.println("CNPJ: " + cnpj);
-        System.out.println("-------------------------");
+        System.out.println("CNPJ: " + CNPJ);
+        System.out.println("______________________________________");
     }
 }

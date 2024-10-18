@@ -11,12 +11,12 @@ public class PessoaFisicaDAO {
     private final ConectorBD conectorBD = new ConectorBD();
     
     //Método para retornar uma pessoa física pelo ID
-    public PessoaFisica getPessoa(int idPessoa) throws SQLException {
-        String sql = "SELECT p.*, pf.cpf "
+    public PessoaFisica getPessoa(int IDPessoa) throws SQLException {
+        String sql = "SELECT p.*, pf.CPF "
                 + "FROM Pessoas p "
                 + "INNER JOIN PessoasFisicas pf "
-                + "ON p.idPessoa = pf.Pessoas_idPessoa "
-                + "WHERE p.idPessoa = ?";
+                + "ON p.IDPessoa = pf.Pessoas_IDPessoa "
+                + "WHERE p.IDPessoa = ?";
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -24,22 +24,22 @@ public class PessoaFisicaDAO {
         try {
             conn = conectorBD.getConnection();
             pst = conn.prepareStatement(sql);
-            pst.setInt(1, idPessoa);
+            pst.setInt(1, IDPessoa);
             rs = pst.executeQuery();
             if (rs.next()) {
                 pessoaFisica = new PessoaFisica(
-                    rs.getInt("idPessoa"),
-                    rs.getString("nomePessoa"),
-                    rs.getString("email"),
-                    rs.getString("telefone"),
-                    rs.getString("logradouro"),
-                    rs.getString("cidade"),
-                    rs.getString("estado"),
-                    rs.getString("cpf")
+                    rs.getInt("IDPessoa"),
+                    rs.getString("NomePessoa"),
+                    rs.getString("Email"),
+                    rs.getString("Telefone"),
+                    rs.getString("Logradouro"),
+                    rs.getString("Cidade"),
+                    rs.getString("Estado"),
+                    rs.getString("CPF")
                 );
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao buscar a pessoa fisica pelo id: " + e.getMessage());
+            System.out.println("Erro ao buscar a pessoa fisica pelo ID: " + e.getMessage());
             throw e;
         } finally {
             conectorBD.close(rs);
@@ -51,10 +51,10 @@ public class PessoaFisicaDAO {
     
     //Método para retornar todas as pessoas físicas do banco de dados
     public List<PessoaFisica> getPessoas() throws SQLException {
-        String sql = "SELECT p.*, pf.cpf "
+        String sql = "SELECT p.*, pf.CPF "
                 + "FROM Pessoas p "
                 + "INNER JOIN PessoasFisicas pf "
-                + "ON p.idPessoa = pf.Pessoas_idPessoa";
+                + "ON p.IDPessoa = pf.Pessoas_IDPessoa";
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -65,14 +65,14 @@ public class PessoaFisicaDAO {
             rs = pst.executeQuery();
             while (rs.next()) {
                 PessoaFisica pessoaFisica = new PessoaFisica(
-                    rs.getInt("idPessoa"),
-                    rs.getString("nomePessoa"),
-                    rs.getString("email"),
-                    rs.getString("telefone"),
-                    rs.getString("logradouro"),
-                    rs.getString("cidade"),
-                    rs.getString("estado"),
-                    rs.getString("cpf")
+                    rs.getInt("IDPessoa"),
+                    rs.getString("NomePessoa"),
+                    rs.getString("Email"),
+                    rs.getString("Telefone"),
+                    rs.getString("Logradouro"),
+                    rs.getString("Cidade"),
+                    rs.getString("Estado"),
+                    rs.getString("CPF")
                 );
                 listaPf.add(pessoaFisica);
             }
@@ -89,9 +89,9 @@ public class PessoaFisicaDAO {
     
     //Método para incluir uma pessoa física
     public void incluir(PessoaFisica pessoaFisica) throws SQLException {
-        String sqlPessoa = "INSERT INTO Pessoas (idPessoa, nomePessoa, email, telefone, logradouro, cidade, estado) "
+        String sqlPessoa = "INSERT INTO Pessoas (IDPessoa, NomePessoa, Email, Telefone, Logradouro, Cidade, Estado) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        String sqlPessoaFisica = "INSERT INTO PessoasFisicas (idPessoa, cpf) "
+        String sqlPessoaFisica = "INSERT INTO PessoasFisicas (Pessoas_IDPessoa, CPF) "
                 + "VALUES (?,?)";
         Connection conn = null;
         PreparedStatement pstPessoa = null;
@@ -99,10 +99,11 @@ public class PessoaFisicaDAO {
         try {
             conn = conectorBD.getConnection();
             conn.setAutoCommit(false);
-            int idPessoa = SequenceManager.getValue("sequenciaIdPessoa");
+            int IDPessoa = SequenceManager.getValue("Sequencia_IDPessoa");
+            pessoaFisica.setIDPessoa(IDPessoa);
             //Incluindo na tabela Pessoas
             pstPessoa = conn.prepareStatement(sqlPessoa);
-            pstPessoa.setInt(1, idPessoa);
+            pstPessoa.setInt(1, IDPessoa);
             pstPessoa.setString(2, pessoaFisica.getNomePessoa());
             pstPessoa.setString(3, pessoaFisica.getEmail());
             pstPessoa.setString(4, pessoaFisica.getTelefone());
@@ -112,8 +113,8 @@ public class PessoaFisicaDAO {
             pstPessoa.executeUpdate();
             //Incluindo na tabela PessoasFisicas
             pstPessoaFisica = conn.prepareStatement(sqlPessoaFisica);
-            pstPessoaFisica.setInt(1, idPessoa);
-            pstPessoaFisica.setString(2, pessoaFisica.getCpf());
+            pstPessoaFisica.setInt(1, IDPessoa);
+            pstPessoaFisica.setString(2, pessoaFisica.getCPF());
             pstPessoaFisica.executeUpdate();
             conn.commit();
         } catch (SQLException e) {
@@ -136,11 +137,11 @@ public class PessoaFisicaDAO {
     //Método para alterar uma pessoa física
     public void alterar(PessoaFisica pessoaFisica) throws SQLException {
         String sqlPessoa = "UPDATE Pessoas "
-                + "SET nomePessoa = ?, email = ?, telefone = ?, logradouro = ?, cidade = ?, estado = ? "
-                + "WHERE idPessoa = ?";
+                + "SET NomePessoa = ?, Email = ?, Telefone = ?, Logradouro = ?, Cidade = ?, Estado = ? "
+                + "WHERE IDPessoa = ?";
         String sqlPessoaFisica = "UPDATE PessoasFisicas "
-                + "SET cpf = ? "
-                + "WHERE idPessoa = ?";
+                + "SET CPF = ? "
+                + "WHERE Pessoas_IDPessoa = ?";
         Connection conn = null;
         PreparedStatement pstPessoa = null;
         PreparedStatement pstPessoaFisica = null;
@@ -155,12 +156,12 @@ public class PessoaFisicaDAO {
             pstPessoa.setString(4, pessoaFisica.getLogradouro());
             pstPessoa.setString(5, pessoaFisica.getCidade());
             pstPessoa.setString(6, pessoaFisica.getEstado());
-            pstPessoa.setInt(7, pessoaFisica.getIdPessoa());
+            pstPessoa.setInt(7, pessoaFisica.getIDPessoa());
             pstPessoa.executeUpdate();
             //Alterando na tabela PessoasFisicas
             pstPessoaFisica = conn.prepareStatement(sqlPessoaFisica);
-            pstPessoaFisica.setString(1, pessoaFisica.getCpf());
-            pstPessoaFisica.setInt(2, pessoaFisica.getIdPessoa());
+            pstPessoaFisica.setString(1, pessoaFisica.getCPF());
+            pstPessoaFisica.setInt(2, pessoaFisica.getIDPessoa());
             pstPessoaFisica.executeUpdate();
             conn.commit();
         } catch (SQLException e) {
@@ -181,11 +182,11 @@ public class PessoaFisicaDAO {
     }
     
     //Método para excluir uma pessoa física
-    public void excluir(int idPessoa) throws SQLException {
+    public void excluir(int IDPessoa) throws SQLException {
         String sqlPessoa = "DELETE FROM Pessoas "
-                + "WHERE idPessoa = ?";
+                + "WHERE IDPessoa = ?";
         String sqlPessoaFisica = "DELETE FROM PessoasFisicas "
-                + "WHERE idPessoa = ?";
+                + "WHERE Pessoas_IDPessoa = ?";
         Connection conn = null;
         PreparedStatement pstPessoa = null;
         PreparedStatement pstPessoaFisica = null;
@@ -194,11 +195,11 @@ public class PessoaFisicaDAO {
             conn.setAutoCommit(false);
             //Deletando da tabela PessoasFisicas
             pstPessoaFisica = conn.prepareStatement(sqlPessoaFisica);
-            pstPessoaFisica.setInt(1, idPessoa);
+            pstPessoaFisica.setInt(1, IDPessoa);
             pstPessoaFisica.executeUpdate();
             //Deletando da tabela Pessoas
             pstPessoa = conn.prepareStatement(sqlPessoa);
-            pstPessoa.setInt(1, idPessoa);
+            pstPessoa.setInt(1, IDPessoa);
             pstPessoa.executeUpdate();
             conn.commit();
         } catch (SQLException e) {

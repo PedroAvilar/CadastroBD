@@ -3,81 +3,81 @@ package cadastrobd.model;
 //Classe Pessoa
 public class Pessoa {
     //Campos
-    private int idPessoa;
-    private String nomePessoa;
-    private String email;
-    private String telefone;
-    private String logradouro;
-    private String cidade;
-    private String estado;
+    private int IDPessoa;
+    private String NomePessoa;
+    private String Email;
+    private String Telefone;
+    private String Logradouro;
+    private String Cidade;
+    private String Estado;
     
     //Construtor padrão
     public Pessoa() { }
     
     //Construtor completo
-    public Pessoa (int idPessoa, String nomePessoa, String email, String telefone,
-            String logradouro, String cidade, String estado) {
-        this.idPessoa = idPessoa;
-        this.nomePessoa = nomePessoa;
-        this.email = email;
-        this.telefone = telefone;
-        this.logradouro = logradouro;
-        this.cidade = cidade;
-        this.estado = estado;
+    public Pessoa (int IDPessoa, String NomePessoa, String Email, String Telefone,
+            String Logradouro, String Cidade, String Estado) {
+        this.IDPessoa = IDPessoa;
+        this.NomePessoa = NomePessoa;
+        this.Email = Email;
+        this.Telefone = Telefone;
+        this.Logradouro = Logradouro;
+        this.Cidade = Cidade;
+        this.Estado = Estado;
     }
     
     //Getters e setters
-    public int getIdPessoa() {
-        return idPessoa;
+    public int getIDPessoa() {
+        return IDPessoa;
     }
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setIDPessoa(int IDPessoa) {
+        this.IDPessoa = IDPessoa;
     }
     public String getNomePessoa() {
-        return nomePessoa;
+        return NomePessoa;
     }
-    public void setNomePessoa(String nomePessoa) {
-        this.nomePessoa = nomePessoa;
+    public void setNomePessoa(String NomePessoa) {
+        this.NomePessoa = NomePessoa;
     }
     public String getEmail() {
-        return email;
+        return Email;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
     public String getTelefone() {
-        return telefone;
+        return Telefone;
     }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefone(String Telefone) {
+        this.Telefone = Telefone;
     }
     public String getLogradouro() {
-        return logradouro;
+        return Logradouro;
     }
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setLogradouro(String Logradouro) {
+        this.Logradouro = Logradouro;
     }
     public String getCidade() {
-        return cidade;
+        return Cidade;
     }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCidade(String Cidade) {
+        this.Cidade = Cidade;
     }
     public String getEstado() {
-        return estado;
+        return Estado;
     }
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
     }
     
     //Método para exibir os dados no console
     public void exibir() {
-        System.out.println("ID Pessoa: " + idPessoa);
-        System.out.println("Nome: " + nomePessoa);
-        System.out.println("E-mail: " + email);
-        System.out.println("Telefone: " + telefone);
-        System.out.println("Logradouro: " + logradouro);
-        System.out.println("Cidade: " + cidade);
-        System.out.println("Estado: " + estado);
+        System.out.println("ID Pessoa: " + IDPessoa);
+        System.out.println("Nome: " + NomePessoa);
+        System.out.println("E-mail: " + Email);
+        System.out.println("Telefone: " + Telefone);
+        System.out.println("Logradouro: " + Logradouro);
+        System.out.println("Cidade: " + Cidade);
+        System.out.println("Estado: " + Estado);
     }
 }
