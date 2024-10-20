@@ -20,14 +20,13 @@ public class PessoaFisica extends Pessoa {
     public String getCPF() {
         return CPF;
     }
-    public void setCpf(String CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
     
     //Método exibir que sobrescreve exibir na classe Pessoa
     @Override
     public void exibir() {
-        System.out.println("DADOS DA PESSOA FISICA");
         super.exibir();
         System.out.println("CPF: " + CPF);
         System.out.println("______________________________________");

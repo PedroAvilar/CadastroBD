@@ -27,7 +27,6 @@ public class PessoaJuridica extends Pessoa {
     //Método exibir que sobrescreve exibir na classe Pessoa
     @Override
     public void exibir() {
-        System.out.println("DADOS DA PESSOA JURIDICA");
         super.exibir();
         System.out.println("CNPJ: " + CNPJ);
         System.out.println("______________________________________");
