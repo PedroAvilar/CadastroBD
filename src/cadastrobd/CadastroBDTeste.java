@@ -14,7 +14,7 @@ public class CadastroBDTeste {
         PessoaJuridicaDAO pjDAO = new PessoaJuridicaDAO();
         
         try {
-            //Instancia de pessoa física persistida no banco de dados
+            //Instância de pessoa física persistida no banco de dados
             PessoaFisica pf = new PessoaFisica(0, "Claudio Pontes", "claudio06@email.com",
                     "11955664489", "Rua Moraes, 17", "Lapa", "SP", "44888959610");
             pfDAO.incluir(pf);
@@ -40,7 +40,7 @@ public class CadastroBDTeste {
             System.out.println("Pessoa fisica excluida com sucesso.");
             System.out.println("______________________________________");
             
-            //Instancia de uma pessoa juridica persistida no banco de dados
+            //Instância de uma pessoa jurídica persistida no banco de dados
             PessoaJuridica pj = new PessoaJuridica(0, "Sacola Verde", "sacver@email.com",
                     "3333445566", "Avenida Kimber, 5", "Rio Claro", "MG", "12345678508199");
             pjDAO.incluir(pj);
@@ -61,7 +61,7 @@ public class CadastroBDTeste {
                 pessoa.exibir();
             }
             
-            //Ecluir a pessoa jurídica criada anteriormente
+            //Excluir a pessoa jurídica criada anteriormente
             pjDAO.excluir(pj.getIDPessoa());
             System.out.println("Pessoa juridica excluida com sucesso.");
             System.out.println("______________________________________");
