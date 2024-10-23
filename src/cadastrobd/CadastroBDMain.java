@@ -167,7 +167,7 @@ public class CadastroBDMain {
                                 pfDAO.excluir(id);
                                 System.out.println("Pessoa fisica excluida com sucesso.\n");
                             } else {
-                                System.out.println("ID não encontrado.");
+                                System.out.println("ID nao encontrado.");
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao excluir pf na classe principal: " + e.getMessage());
