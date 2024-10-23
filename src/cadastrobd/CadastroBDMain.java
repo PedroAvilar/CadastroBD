@@ -73,7 +73,6 @@ public class CadastroBDMain {
                             System.out.println("Pessoa fisica incluida com sucesso.\n");
                         } catch (SQLException e) {
                             System.out.println("Erro ao incluir pf pela classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else if (tipoIncluir.equalsIgnoreCase("J")) {  //Pessoa Jurídica
                         System.out.println("Insira os dados da pessoa juridica.\n");
@@ -93,7 +92,6 @@ public class CadastroBDMain {
                             System.out.println("Pessoa juridica incluida com sucesso.\n");
                         } catch (SQLException e) {
                             System.out.println("Erro ao incluir pj pela classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else {
                         System.out.println("Opcao invalida.");
@@ -127,7 +125,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao alterar pf na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else if (tipoAlterar.equalsIgnoreCase("J")) {  //Pessoa Jurídica
                         try {
@@ -152,7 +149,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao alterar pj na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else {
                         System.out.println("Opcao invalida.");
@@ -175,7 +171,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao excluir pf na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else if (tipoExcluir.equalsIgnoreCase("J")) {  //Pessoa Jurídica
                         try {
@@ -189,7 +184,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao excluir pj na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else {
                         System.out.println("Opcao invalida.");
@@ -212,7 +206,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao buscar pf na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else if (tipoBuscar.equalsIgnoreCase("J")) {  //Pessoa Jurídica
                         try {
@@ -226,7 +219,6 @@ public class CadastroBDMain {
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao buscar pj na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else {
                         System.out.println("Opcao invalida.");
@@ -243,7 +235,6 @@ public class CadastroBDMain {
                             pfDAO.getPessoas().forEach(pf -> pf.exibir());
                         } catch (SQLException e) {
                             System.out.println("Erro ao exibir todas pf na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else if (tipoExibirTodos.equalsIgnoreCase("J")) {  //Pessoa Jurídica
                         try {
@@ -251,7 +242,6 @@ public class CadastroBDMain {
                             pjDAO.getPessoas().forEach(pj -> pj.exibir());
                         } catch (SQLException e) {
                             System.out.println("Erro ao exibir todas pj na classe principal: " + e.getMessage());
-                            scanner.close();
                         }
                     } else {
                         System.out.println("Opcao invalida.");
