@@ -180,7 +180,7 @@ public class CadastroBDMain {
                                 pjDAO.excluir(id);
                                 System.out.println("Pessoa juridica excluida com sucesso.\n");
                             } else {
-                                System.out.println("ID não encontrado.");
+                                System.out.println("ID nao encontrado.");
                             }
                         } catch (SQLException e) {
                             System.out.println("Erro ao excluir pj na classe principal: " + e.getMessage());
